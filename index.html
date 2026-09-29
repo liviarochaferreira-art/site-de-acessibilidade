@@ -425,74 +425,103 @@
         </p>
     </footer>
 
-    <!-- PAINEL DE ACESSIBILIDADE -->
-<div id="acessibilidade" class="acessibilidade">
-    <h2>Recursos de acessibilidade</h2>
+       <!-- PAINEL DE ACESSIBILIDADE -->
+       <div id="acessibilidade" class="acessibilidade">
 
-    <button onclick="aumentarFonte()">
-        🔎 Aumentar texto
-    </button>
+        <h2>Recursos de acessibilidade</h2>
 
-    <button onclick="diminuirFonte()">
-        🔍 Diminuir texto
-    </button>
+        <button onclick="aumentarFonte()">
+            🔎 Aumentar texto
+        </button>
 
-    <button onclick="altoContraste()">
-        ◐ Alto contraste
-    </button>
+        <button onclick="diminuirFonte()">
+            🔍 Diminuir texto
+        </button>
 
-    <button onclick="lerPagina()">
-        🔊 Ler página
-    </button>
+        <button onclick="altoContraste()">
+            ◐ Alto contraste
+        </button>
 
-    <button onclick="pararLeitura()">
-        ⏹ Parar leitura
-    </button>
-</div>
+        <button onclick="lerPagina()">
+            🔊 Ler página
+        </button>
 
-<script>
+        <button onclick="pararLeitura()">
+            ⏹ Parar leitura
+        </button>
 
-    let tamanhoFonte = 16;
+        <button onclick="abrirLibras()">
+            🤟 Libras
+        </button>
 
-    function aumentarFonte() {
-        tamanhoFonte += 2;
-        document.body.style.fontSize = tamanhoFonte + "px";
-    }
+    </div>
 
-    function diminuirFonte() {
-        if (tamanhoFonte > 12) {
-            tamanhoFonte -= 2;
+    <script>
+
+        let tamanhoFonte = 16;
+
+        function aumentarFonte() {
+            tamanhoFonte += 2;
             document.body.style.fontSize = tamanhoFonte + "px";
         }
-    }
 
-    function altoContraste() {
-        document.body.classList.toggle("alto-contraste");
-    }
+        function diminuirFonte() {
+            if (tamanhoFonte > 12) {
+                tamanhoFonte -= 2;
+                document.body.style.fontSize = tamanhoFonte + "px";
+            }
+        }
 
-    function lerPagina() {
+        function altoContraste() {
+            document.body.classList.toggle("alto-contraste");
+        }
 
-        // Para uma leitura anterior
-        speechSynthesis.cancel();
+        function lerPagina() {
+            speechSynthesis.cancel();
 
-        // Pega o texto visível da página
-        let texto = document.body.innerText;
+            let texto = document.body.innerText;
 
-        let leitura = new SpeechSynthesisUtterance(texto);
+            let leitura = new SpeechSynthesisUtterance(texto);
 
-        leitura.lang = "pt-BR";
-        leitura.rate = 1;
-        leitura.pitch = 1;
-        leitura.volume = 1;
+            leitura.lang = "pt-BR";
+            leitura.rate = 1;
+            leitura.pitch = 1;
+            leitura.volume = 1;
 
-        speechSynthesis.speak(leitura);
-    }
+            speechSynthesis.speak(leitura);
+        }
 
-    function pararLeitura() {
-        speechSynthesis.cancel();
-    }
+        function pararLeitura() {
+            speechSynthesis.cancel();
+        }
 
-</script>
+        function abrirLibras() {
+            const botaoLibras = document.querySelector('[vw-access-button]');
+
+            if (botaoLibras) {
+                botaoLibras.click();
+            }
+        }
+
+    </script>
+
+
+    <!-- VLibras -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+    <script>
+        new window.VLibras.Widget(
+            'https://vlibras.gov.br/app'
+        );
+    </script>
 
 </body>
 </html>
