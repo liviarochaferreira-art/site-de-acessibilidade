@@ -281,6 +281,52 @@
 .modo-conforto footer {
     filter: saturate(45%);
 }
+
+/* MODO PARA FACILITAR A INTERAÇÃO */
+
+.modo-facil {
+    --tamanho-clique: 1.25;
+}
+
+/* Aumenta botões */
+.modo-facil button {
+    padding: 16px 24px !important;
+    min-height: 55px;
+    font-size: 18px !important;
+    margin: 10px !important;
+}
+
+/* Aumenta os links do menu */
+.modo-facil .menu a {
+    display: inline-block;
+    padding: 14px 12px;
+    margin: 3px;
+}
+
+/* Aumenta o espaço entre os itens */
+.modo-facil .menu {
+    gap: 12px;
+}
+
+/* Facilita a seleção dos cards */
+.modo-facil .card {
+    margin-bottom: 8px;
+}
+
+/* Destaca elementos interativos ao passar o mouse */
+.modo-facil button:hover,
+.modo-facil a:hover {
+    outline: 4px solid #facc15;
+    outline-offset: 3px;
+}
+
+/* Foco visível para teclado */
+.modo-facil button:focus,
+.modo-facil a:focus {
+    outline: 4px solid #2563eb;
+    outline-offset: 4px;
+}
+
     </style>
 </head>
 
@@ -469,6 +515,10 @@
              Parar leitura
         </button>
 
+        <button onclick="modoFacil()">
+      Cliques facilitados
+</button>
+
         <button onclick="abrirLibras()">
              Libras
         </button>
@@ -526,6 +576,10 @@
                 botaoLibras.click();
             }
         }
+
+        function modoFacil() {
+    document.body.classList.toggle("modo-facil");
+}
 
     </script>
 
