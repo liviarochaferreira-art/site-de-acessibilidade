@@ -266,6 +266,21 @@
                 height: 250px;
             }
         }
+        /* MODO CONFORTO VISUAL */
+
+.modo-conforto {
+    filter: saturate(45%);
+}
+
+.modo-conforto img {
+    filter: saturate(35%);
+}
+
+.modo-conforto header,
+.modo-conforto nav,
+.modo-conforto footer {
+    filter: saturate(45%);
+}
     </style>
 </head>
 
@@ -431,27 +446,31 @@
         <h2>Recursos de acessibilidade</h2>
 
         <button onclick="aumentarFonte()">
-            🔎 Aumentar texto
+             Aumentar texto
         </button>
 
         <button onclick="diminuirFonte()">
-            🔍 Diminuir texto
+             Diminuir texto
         </button>
 
         <button onclick="altoContraste()">
-            ◐ Alto contraste
+            Alto contraste
         </button>
 
+        <button onclick="modoConforto()">
+     Cores suaves
+</button>
+
         <button onclick="lerPagina()">
-            🔊 Ler página
+            Ler página
         </button>
 
         <button onclick="pararLeitura()">
-            ⏹ Parar leitura
+             Parar leitura
         </button>
 
         <button onclick="abrirLibras()">
-            🤟 Libras
+             Libras
         </button>
 
     </div>
@@ -476,6 +495,11 @@
             document.body.classList.toggle("alto-contraste");
         }
 
+        function modoConforto() {
+    document.body.classList.toggle("modo-conforto");
+}
+
+        
         function lerPagina() {
             speechSynthesis.cancel();
 
